@@ -511,31 +511,30 @@ img { max-width: 100%; display: block; }
   gap: 24px;
 }
 
+/* Cyber cards – keep card still, only lift the image */
 .cyber-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 28px 24px;
-  transition: transform 0.25s, border-color 0.25s;
+  transition: border-color 0.25s;
 }
-.cyber-card:hover { transform: translateY(-6px); border-color: var(--blue-mid); }
 
-.cyber-icon { font-size: 26px; margin-bottom: 16px; }
-.cyber-card h3 { font-size: 16px; margin-bottom: 14px; }
-.cyber-card li {
-  font-size: 13.5px;
-  color: var(--text-muted);
-  padding-left: 16px;
-  position: relative;
-  margin-bottom: 8px;
+.cyber-card:hover {
+  border-color: var(--blue-mid);
+  transform: none; /* prevent the whole card from lifting */
 }
-.cyber-card li::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 8px;
-  width: 5px; height: 5px;
-  background: var(--blue-bright);
-  border-radius: 50%;
+
+/* Only the image lifts */
+.cyber-card-header img {
+  display: block;
+  width: 100%;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.cyber-card:hover .cyber-card-header img {
+  transform: translateY(-8px);
 }
 
 /* ===================== JOURNEY ===================== */
