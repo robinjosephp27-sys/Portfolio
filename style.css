@@ -473,37 +473,50 @@ img { max-width: 100%; display: block; }
   gap: 28px;
 }
 
+/* ===== PROJECTS GRID – 2x2 Layout ===== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+/* Project Card – no lift on the whole card */
 .project-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: transform 0.25s, border-color 0.25s;
-}
-.project-card:hover { transform: translateY(-6px); border-color: var(--blue-mid); }
-
-.project-media {
-  height: 180px;
-  background-size: cover;
-  background-position: center;
-}
-.proj-media-1 { background: linear-gradient(135deg, #14532d, #166534); }
-.proj-media-2 { background: linear-gradient(135deg, #0f172a, #1e3a8a); }
-.proj-media-3 { background: linear-gradient(135deg, #0b1730, #1d4ed8); }
-
-.project-body { padding: 24px; }
-.project-body h3 { font-size: 18px; margin-bottom: 10px; }
-.project-body p { color: var(--text-muted); font-size: 14px; line-height: 1.6; margin-bottom: 16px; }
-
-.tags { display: flex; gap: 8px; flex-wrap: wrap; }
-.tags span {
-  font-size: 12px;
-  color: var(--blue-bright);
-  background: rgba(56, 189, 248, 0.1);
-  padding: 5px 12px;
-  border-radius: 999px;
+  transition: border-color 0.25s;
 }
 
+.project-card:hover {
+  border-color: var(--blue-mid);
+  transform: none; /* stops the whole card from moving */
+}
+
+/* Only the image lifts */
+.project-image {
+  overflow: hidden;
+}
+
+.project-image img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.project-card:hover .project-image img {
+  transform: translateY(-10px);
+}
+
+/* Responsive – stack on smaller screens */
+@media (max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
 /* ===================== CYBERSECURITY ===================== */
 .cyber-grid {
   display: grid;
