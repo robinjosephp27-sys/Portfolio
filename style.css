@@ -480,20 +480,20 @@ img { max-width: 100%; display: block; }
   gap: 28px;
 }
 
-/* ===== PROJECT CARDS – Image lift + Gradient border ===== */
-
+/* ===== PROJECT CARDS ===== */
 .project-card {
   position: relative;
   background: var(--bg-card);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  border: none;
+  border: 1px solid var(--border); /* normal subtle border */
   z-index: 1;
-  transition: none;
+  transition: border-color 0.25s;
 }
 
 .project-card:hover {
-  transform: none; /* stop whole card from lifting */
+  transform: none;
+  border-color: transparent; /* hide normal border on hover */
 }
 
 /* Only the image lifts */
@@ -513,19 +513,14 @@ img { max-width: 100%; display: block; }
   transform: translateY(-10px);
 }
 
-/* Gradient border (same colours as Cyber cards) */
+/* Gradient border - only on hover */
 .project-card::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: var(--radius-lg);
   padding: 1px;
-  background: linear-gradient(
-    135deg,
-    #22c55e 0%,
-    #22d3ee 40%,
-    #3b82f6 100%
-  );
+  background: linear-gradient(135deg, #22c55e 0%, #22d3ee 40%, #3b82f6 100%);
   -webkit-mask: 
     linear-gradient(#fff 0 0) content-box, 
     linear-gradient(#fff 0 0);
@@ -533,64 +528,28 @@ img { max-width: 100%; display: block; }
   mask-composite: exclude;
   z-index: -1;
   pointer-events: none;
+  opacity: 0;                    /* hidden by default */
+  transition: opacity 0.3s ease;
 }
 
 .project-card:hover::before {
-  background: linear-gradient(
-    135deg,
-    #4ade80 0%,
-    #22d3ee 45%,
-    #60a5fa 100%
-  );
+  opacity: 1;                    /* show only on hover */
 }
 
-/* ===================== CYBERSECURITY ===================== */
-.cyber-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-
-/* Cyber cards – keep card still, only lift the image */
-.cyber-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 28px 24px;
-  transition: border-color 0.25s;
-}
-
-.cyber-card:hover {
-  border-color: var(--blue-mid);
-  transform: none; /* prevent the whole card from lifting */
-}
-
-/* Only the image lifts */
-.cyber-card-header img {
-  display: block;
-  width: 100%;
-  border-radius: 12px;
-  transition: transform 0.3s ease;
-}
-
-.cyber-card:hover .cyber-card-header img {
-  transform: translateY(-8px);
-}
 /* ===== CYBERSECURITY CARDS ===== */
-
-/* Base card style + stop whole card from lifting */
 .cyber-card {
   position: relative;
   background: var(--bg-card);
   border-radius: var(--radius-lg);
   padding: 28px 24px;
-  border: none;
+  border: 1px solid var(--border);
   z-index: 1;
   transition: border-color 0.25s;
 }
 
 .cyber-card:hover {
   transform: none;
+  border-color: transparent;
 }
 
 /* Only the image lifts */
@@ -605,19 +564,14 @@ img { max-width: 100%; display: block; }
   transform: translateY(-8px);
 }
 
-/* Gradient border */
+/* Gradient border - only on hover */
 .cyber-card::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: var(--radius-lg);
   padding: 1px;
-  background: linear-gradient(
-    135deg,
-    #22c55e 0%,
-    #22d3ee 40%,
-    #3b82f6 100%
-  );
+  background: linear-gradient(135deg, #22c55e 0%, #22d3ee 40%, #3b82f6 100%);
   -webkit-mask: 
     linear-gradient(#fff 0 0) content-box, 
     linear-gradient(#fff 0 0);
@@ -625,15 +579,12 @@ img { max-width: 100%; display: block; }
   mask-composite: exclude;
   z-index: -1;
   pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .cyber-card:hover::before {
-  background: linear-gradient(
-    135deg,
-    #4ade80 0%,
-    #22d3ee 45%,
-    #60a5fa 100%
-  );
+  opacity: 1;
 }
 
 /* ===================== JOURNEY ===================== */
