@@ -517,6 +517,7 @@ img { max-width: 100%; display: block; }
     grid-template-columns: 1fr;
   }
 }
+
 /* ===================== CYBERSECURITY ===================== */
 .cyber-grid {
   display: grid;
@@ -548,6 +549,65 @@ img { max-width: 100%; display: block; }
 
 .cyber-card:hover .cyber-card-header img {
   transform: translateY(-8px);
+}
+/* ===== CYBERSECURITY CARDS ===== */
+
+/* Base card style + stop whole card from lifting */
+.cyber-card {
+  position: relative;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  border: none;
+  z-index: 1;
+  transition: border-color 0.25s;
+}
+
+.cyber-card:hover {
+  transform: none;
+}
+
+/* Only the image lifts */
+.cyber-card-header img {
+  display: block;
+  width: 100%;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.cyber-card:hover .cyber-card-header img {
+  transform: translateY(-8px);
+}
+
+/* Gradient border */
+.cyber-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    #22c55e 0%,
+    #22d3ee 40%,
+    #3b82f6 100%
+  );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.cyber-card:hover::before {
+  background: linear-gradient(
+    135deg,
+    #4ade80 0%,
+    #22d3ee 45%,
+    #60a5fa 100%
+  );
 }
 
 /* ===================== JOURNEY ===================== */
