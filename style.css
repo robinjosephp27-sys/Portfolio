@@ -543,6 +543,46 @@ img { max-width: 100%; display: block; }
   width: 5px; height: 5px;
   background: var(--blue-bright);
   border-radius: 50%;
+}/* Gradient border for Cybersecurity cards */
+.cyber-card {
+  position: relative;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  border: none; /* remove normal border */
+  z-index: 1;
+}
+
+/* Gradient border using pseudo-element */
+.cyber-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  padding: 1px;               /* thickness of the border */
+  background: linear-gradient(
+    135deg,
+    #22c55e 0%,               /* green */
+    #22d3ee 40%,              /* cyan */
+    #3b82f6 100%              /* blue */
+  );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Optional: stronger glow on hover */
+.cyber-card:hover::before {
+  background: linear-gradient(
+    135deg,
+    #4ade80 0%,
+    #22d3ee 45%,
+    #60a5fa 100%
+  );
 }
 
 /* ===================== JOURNEY ===================== */
