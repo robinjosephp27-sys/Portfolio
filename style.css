@@ -586,45 +586,59 @@ img { max-width: 100%; display: block; }
 }
 
 /* ===================== JOURNEY ===================== */
+/* ===== JOURNEY SECTION ===== */
 .journey-track {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 20px;
   position: relative;
 }
-.journey-track::before {
-  content: '';
-  position: absolute;
-  top: 26px;
-  left: 5%;
-  right: 5%;
-  height: 1px;
-  background: var(--border);
-  z-index: 0;
-}
 
 .journey-item {
   position: relative;
-  z-index: 1;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 24px 18px;
   text-align: center;
+  transition: border-color 0.25s, transform 0.25s;
+  z-index: 1;
 }
-.journey-item.future { border-color: var(--blue-mid); background: rgba(56,189,248,0.05); }
 
-.journey-icon {
-  width: 44px; height: 44px;
-  margin: 0 auto 14px;
-  border-radius: 50%;
-  background: rgba(56,189,248,0.12);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px;
+/* Remove the permanent blue border from the future card */
+.journey-item.future {
+  border-color: var(--border);
+  background: var(--bg-card);
 }
-.journey-item h3 { font-size: 14.5px; margin-bottom: 8px; }
-.journey-item p { font-size: 12.5px; color: var(--text-muted); line-height: 1.5; }
 
+/* Hover effect – only subtle lift + gradient border */
+.journey-item:hover {
+  transform: translateY(-6px);
+  border-color: transparent;
+}
+
+/* Gradient border on hover (same style as Projects & Cyber cards) */
+.journey-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  padding: 1px;
+  background: linear-gradient(135deg, #22c55e 0%, #22d3ee 40%, #3b82f6 100%);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.journey-item:hover::before {
+  opacity: 1;
+}
 /* ===================== CONTACT ===================== */
 .contact-grid {
   display: grid;
