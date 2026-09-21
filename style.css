@@ -40,7 +40,9 @@ button { font-family: inherit; cursor: pointer; }
 img { max-width: 100%; display: block; }
 
 .accent { color: var(--blue-mid); }
-
+section {
+  scroll-margin-top: 80px;
+}
 .section-inner {
   max-width: var(--max-width);
   margin: 0 auto;
