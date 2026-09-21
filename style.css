@@ -489,7 +489,7 @@ section {
   transform: none; /* stops the whole card from moving */
 }
 .project-card {
-  padding: 28px 28px 30px;
+  padding: 26px 26px 28px;
 }
 
 .project-card h3 {
