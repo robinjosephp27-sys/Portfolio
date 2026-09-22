@@ -655,9 +655,9 @@ section {
   opacity: 1;
 }
 .journey-icon {
-  width: 64px;
-  height: 64px;
-  margin: 0 auto 16px;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 18px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -681,30 +681,11 @@ section {
   line-height: 1.5;
   color: var(--text-muted);
 /* ===================== CONTACT ===================== */
+/* ===== CONTACT FORM FIX ===== */
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1.3fr;
   gap: 60px;
-}
-
-.contact-lead { color: var(--text-muted); font-size: 16px; line-height: 1.7; margin-bottom: 32px; }
-
-.contact-line {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  font-size: 15px;
-  margin-bottom: 18px;
-  color: #e5e7eb;
-}
-.c-icon {
-  width: 36px; height: 36px;
-  border-radius: 8px;
-  background: rgba(56,189,248,0.1);
-  color: var(--blue-bright);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 14px;
-  flex-shrink: 0;
 }
 
 .contact-form {
@@ -714,16 +695,25 @@ section {
   padding: 32px;
 }
 
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
 
-.form-field { margin-bottom: 20px; }
+.form-field {
+  margin-bottom: 20px;
+}
+
 .form-field label {
   display: block;
   font-size: 13px;
   color: var(--text-muted);
   margin-bottom: 8px;
 }
-.form-field input, .form-field textarea {
+
+.form-field input,
+.form-field textarea {
   width: 100%;
   background: var(--bg);
   border: 1px solid var(--border);
@@ -733,20 +723,22 @@ section {
   font-family: inherit;
   font-size: 14px;
   resize: vertical;
-  transition: border-color 0.2s;
 }
-.form-field input:focus, .form-field textarea:focus {
+
+.form-field input:focus,
+.form-field textarea:focus {
   border-color: var(--blue-mid);
   outline: none;
 }
 
-.form-status {
-  margin-top: 14px;
-  font-size: 14px;
-  color: var(--blue-bright);
-  min-height: 20px;
+@media (max-width: 860px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+  }
 }
-
 /* ===================== FOOTER ===================== */
 .site-footer {
   text-align: center;
