@@ -506,7 +506,7 @@ section {
 /* ===================== CYBERSECURITY ===================== */
 .cyber-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
 }
 
@@ -514,7 +514,9 @@ section {
   position: relative;
   background: var(--bg-card);
   border-radius: var(--radius-lg);
-  padding: 28px 24px;
+  padding: 24px;
+  min-height: 570px;
+  box-sizing: border-box;
   border: none;
   z-index: 1;
   transition: transform 0.25s;
@@ -526,8 +528,14 @@ section {
   inset: 0;
   border-radius: var(--radius-lg);
   padding: 1px;
-  background: linear-gradient(135deg, #22c55e 0%, #22d3ee 40%, #3b82f6 100%);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  background: linear-gradient(
+    135deg,
+    #22c55e 0%,
+    #22d3ee 40%,
+    #3b82f6 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   z-index: -1;
